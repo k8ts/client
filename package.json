@@ -8,6 +8,13 @@
     "postbuild": "tspath",
     "watch": "tsc --watch"
   },
+  "prettier": {
+    "bracketSpacing": false,
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
   "dependencies": {
     "fs-extra": "^6.0.1",
     "isomorphic-fetch": "^2.2.1"

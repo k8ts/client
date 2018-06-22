@@ -1,6 +1,6 @@
-import { indent } from "./indent";
-import { commentFromString } from "./commentFromString";
-import { typeFromParameter } from "./typeFromParameter";
+import {indent} from './indent'
+import {commentFromString} from './commentFromString'
+import {typeFromParameter} from './typeFromParameter'
 
 interface Parameter {
   name: string
@@ -9,17 +9,25 @@ interface Parameter {
   required?: boolean
 }
 
-export function interfaceFromParameters(name: string, description: string, parameters: Parameter[], prefix: string = '') {
+export function interfaceFromParameters(
+  name: string,
+  description: string,
+  parameters: Parameter[],
+  prefix: string = '',
+) {
   const imports = new Set<string>()
 
-  const properties = parameters.map(parameter => {
-    return `
+  const properties = parameters
+    .map(parameter => {
+      return `
 ${commentFromString(parameter.description)}
 ${parameter.name}${parameter.required ? ':' : '?:'} ${typeFromParameter(parameter, imports, prefix)}
     `.trim()
-  }).join('\n\n')
+    })
+    .join('\n\n')
 
-  const interfaceDef = `
+  const interfaceDef =
+    `
 ${Array.from(imports).join('\n')}
 
 ${commentFromString(description)}

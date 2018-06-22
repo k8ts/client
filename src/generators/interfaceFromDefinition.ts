@@ -1,7 +1,6 @@
-import { indent } from "./indent";
-import { commentFromString } from "./commentFromString";
-import { typeFromParameter } from "./typeFromParameter";
-
+import {indent} from './indent'
+import {commentFromString} from './commentFromString'
+import {typeFromParameter} from './typeFromParameter'
 
 export function interfaceFromDefinition(id: string, definition: any, prefix: string = '') {
   const imports = new Set<string>()
@@ -16,17 +15,22 @@ export function interfaceFromDefinition(id: string, definition: any, prefix: str
     }
   }
 
-  const properties = definition.properties ? Object.keys(definition.properties).map(key => {
-    const property = definition.properties[key]
-    const isRequired = required.has(key)
+  const properties = definition.properties
+    ? Object.keys(definition.properties)
+        .map(key => {
+          const property = definition.properties[key]
+          const isRequired = required.has(key)
 
-    return `
+          return `
 ${commentFromString(property.description)}
 ${key}${isRequired ? ':' : '?:'} ${typeFromParameter(property, imports, prefix)}
     `.trim()
-  }).join('\n\n') : ''
+        })
+        .join('\n\n')
+    : ''
 
-  const interfaceDef = `
+  const interfaceDef =
+    `
 ${Array.from(imports).join('\n')}
 
 ${commentFromString(definition.description)}

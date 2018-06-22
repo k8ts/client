@@ -1,4 +1,4 @@
-import { Part } from "./parsePath";
+import {Part} from './parsePath'
 
 interface TreeNode {
   name: string
@@ -10,7 +10,7 @@ interface TreeNode {
 export function buildAPITree(paths: Part[][]) {
   const tree: TreeNode = {
     name: '/',
-    children: []
+    children: [],
   }
 
   for (const parts of paths) {
@@ -22,7 +22,7 @@ export function buildAPITree(paths: Part[][]) {
       if (!child) {
         child = {
           name: part.name,
-          children: []
+          children: [],
         }
         node.children.push(child)
       }
@@ -32,10 +32,12 @@ export function buildAPITree(paths: Part[][]) {
       if (part.arg) {
         if (child.withParam) {
           if (child.withParam.name !== part.arg) {
-            throw new Error(`Duplicate name for path parameter:
+            throw new Error(
+              `Duplicate name for path parameter:
   Path: ${JSON.stringify(parts)}
   Names: ${JSON.stringify(child.withParam)}
-            `.trim())
+            `.trim(),
+            )
           }
         } else {
           child.withParam = {
@@ -58,7 +60,6 @@ export function buildAPITree(paths: Part[][]) {
 
   return tree
 }
-
 
 /*
 

@@ -8,6 +8,9 @@ export function commentFromString(str: string) {
   }
 
   return `/**
-${str.split('\n').map(s => ` * ${escapeCommentEndTag(s)}`).join('\n')}
+${str
+    .split('\n')
+    .map(s => ` * ${escapeCommentEndTag(s)}`)
+    .join('\n')}
  */`
 }

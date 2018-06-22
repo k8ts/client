@@ -20,11 +20,14 @@ const paramOverrides: ParamOverrides = {
   '/api/v1/namespaces/{name}': [['name', 'namespace']],
   '/api/v1/namespaces/{name}/finalize': [['name', 'namespace']],
   '/api/v1/namespaces/{name}/status': [['name', 'namespace']],
-  '/api/v1/watch/namespaces/{name}': [['name', 'namespace']]
+  '/api/v1/watch/namespaces/{name}': [['name', 'namespace']],
 }
 
 export function parsePath(full: string, actions: any) {
-  const stringParts = full.replace(/^\//, '').split('/').filter(s => s)
+  const stringParts = full
+    .replace(/^\//, '')
+    .split('/')
+    .filter(s => s)
   const parts: Part[] = []
 
   const paramCount = stringParts.filter(p => isParameter(p)).length
@@ -72,7 +75,6 @@ export function parsePath(full: string, actions: any) {
       actions: partActions,
     })
   }
-
 
   return parts
 }
