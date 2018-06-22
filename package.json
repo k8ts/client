@@ -1,0 +1,22 @@
+{
+  "name": "@k8ts/client",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Jacob Gillespie <jacobwgillespie@gmail.com>",
+  "scripts": {
+    "build": "tsc",
+    "postbuild": "tspath",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "fs-extra": "^6.0.1",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.3",
+    "@types/isomorphic-fetch": "^0.0.34",
+    "prettier": "^1.13.5",
+    "tspath": "^1.2.10",
+    "typescript": "^2.9.2"
+  }
+}
