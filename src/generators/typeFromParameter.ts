@@ -7,7 +7,7 @@ export interface OpenAPIParameter {
   }
 }
 
-function typeFromReference(ref: string, imports: Set<string>, prefix: string = '') {
+function typeFromReference(ref: string, imports: Set<string>, prefix: string) {
   const refName = ref.replace('#/definitions/io.k8s.', '')
   const refParts = refName.split('.')
   const refType = refParts.slice(-1)
@@ -16,7 +16,7 @@ function typeFromReference(ref: string, imports: Set<string>, prefix: string = '
   return refType[0]
 }
 
-export function typeFromParameter(param: OpenAPIParameter, imports: Set<string>, prefix: string = ''): string {
+export function typeFromParameter(param: OpenAPIParameter, imports: Set<string>, prefix: string): string {
   if (param.$ref) {
     return typeFromReference(param.$ref, imports, prefix)
   }

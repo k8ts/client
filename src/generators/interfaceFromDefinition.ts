@@ -2,7 +2,7 @@ import {indent} from './indent'
 import {commentFromString} from './commentFromString'
 import {typeFromParameter} from './typeFromParameter'
 
-export function interfaceFromDefinition(id: string, definition: any, prefix: string = '') {
+export function interfaceFromDefinition(id: string, definition: any, prefix: string) {
   const imports = new Set<string>()
 
   const ifaceParts = id.replace('io.k8s.', '').split('.')

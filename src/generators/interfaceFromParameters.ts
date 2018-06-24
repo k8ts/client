@@ -14,7 +14,7 @@ export function interfaceFromParameters(
   description: string,
   parameters: Parameter[],
   imports: Set<string>,
-  prefix: string = '',
+  prefix: string,
 ) {
   const properties = parameters
     .map(parameter => {
