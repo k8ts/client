@@ -13,10 +13,9 @@ export function interfaceFromParameters(
   name: string,
   description: string,
   parameters: Parameter[],
+  imports: Set<string>,
   prefix: string = '',
 ) {
-  const imports = new Set<string>()
-
   const properties = parameters
     .map(parameter => {
       return `
@@ -28,13 +27,11 @@ ${parameter.name}${parameter.required ? ':' : '?:'} ${typeFromParameter(paramete
 
   const interfaceDef =
     `
-${Array.from(imports).join('\n')}
-
 ${commentFromString(description)}
 export interface ${name} {
 ${indent(properties, '  ')}
 }
-  `.trim() + '\n'
+    `.trim() + '\n'
 
   return interfaceDef
 }

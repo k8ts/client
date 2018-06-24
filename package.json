@@ -22,6 +22,7 @@
   "devDependencies": {
     "@types/fs-extra": "^5.0.3",
     "@types/isomorphic-fetch": "^0.0.34",
+    "fast-case": "^1.1.0",
     "prettier": "^1.13.5",
     "tspath": "^1.2.10",
     "typescript": "^2.9.2"

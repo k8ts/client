@@ -1,6 +1,6 @@
 import {Part} from './parsePath'
 
-interface TreeNode {
+export interface TreeNode {
   name: string
   actions?: any
   children: TreeNode[]
@@ -43,14 +43,14 @@ export function buildAPITree(paths: Part[][]) {
           child.withParam = {
             name: part.arg,
             children: [],
-            actions: isLastPart ? !!part.actions : undefined,
+            actions: isLastPart ? part.actions : undefined,
           }
         }
 
         node = child.withParam
       } else {
         if (isLastPart) {
-          child.actions = !!part.actions
+          child.actions = part.actions
         }
 
         node = child
